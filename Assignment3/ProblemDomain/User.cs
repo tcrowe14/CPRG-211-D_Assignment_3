@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assignment3
 {
-    [DataContract]
-    [KnownType(typeof(SLL))]
+    [Serializable]
     public class User : IEquatable<User>
     {
 

@@ -134,7 +134,7 @@ namespace Assignment3.Tests
             }
         }
 
-        // Test to check if the Arraytonodes work
+        // Test to check if the NodesToArray work
         [Test]
         public void ArrayNodes()
         {

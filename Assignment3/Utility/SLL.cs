@@ -16,6 +16,7 @@ namespace Assignment3
         public CannotRemoveException(string message, Exception innerException) : base(message, innerException) { }
     }
 
+    [Serializable]
     public class SLL : ILinkedListADT
     {
         public Node<User> Head { get; set; }
@@ -285,7 +286,6 @@ namespace Assignment3
                 }
             } while (swapped);
         }
-
 
         public User[] NodesToArray()
         {

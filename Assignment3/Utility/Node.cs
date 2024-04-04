@@ -1,10 +1,13 @@
-﻿namespace Assignment3
+﻿using System;
+
+namespace Assignment3
 
 // Assignment 3
 // Group 1
 // April 3rd 2024
 
 {
+    [Serializable]
     public class Node<User>
     {
         // Node for User
