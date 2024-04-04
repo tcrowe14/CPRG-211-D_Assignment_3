@@ -23,16 +23,14 @@ namespace Assignment3
         private int count;
         public SLL()
         {
-            // Set head and tail to null initially
-            Head = null;
-            Tail = null;
-            count = 0;
+            Head = null; // Initialize Head as null
+            Tail = null; // Initialize Tail as null
+            count = 0; // Initialize count as 0 (list is empty, no values)
         }
 
         public bool IsEmpty()
         {
-            // If count is 0 then list is empty
-            if (count == 0)
+            if (count == 0) // Use count if 0 then list is empty
             {
                 return true;
             }
@@ -41,79 +39,65 @@ namespace Assignment3
 
         public void Clear()
         {
-            // Reset all values
-            Head = null;
-            Tail = null;
-            count = 0;
+            Head = null; // Reset value to clear
+            Tail = null; // Reset value to clear
+            count = 0; // Reset value to clear
         }
 
         public void AddLast(User value)
         {
-            // Create new node with value
-            Node<User> node = new Node<User>(value);
-            // If head is null (empty list) then set head to node
-            if (Head == null)
+            Node<User> node = new Node<User>(value); // Create new node with value
+            if (Head == null) // If list is empty then set head to node
             {
                 Head = node;
             }
             else
-            // Else set tail to node
             {
-                Tail.Next = node;
+                Tail.Next = node; // Set tail to node
             }
             Tail = node;
-            // Update count
-            count++;
+            count++; // Increment count
         }
 
         public void AddFirst(User value)
         {
-            // Create new node with value
-            Node<User> node = new Node<User>(value);
-            // If head is null (empty list) set head and tail to node
-            if (Head == null)
+            Node<User> node = new Node<User>(value); // Create new node with value
+            if (Head == null) // If list is empty then set head and tail to node
             {
                 Head = node;
                 Tail = node;
             }
             else
-            // Else set head of node to current head and set head to node
             {
-                node.Next = Head;
-                Head = node;
+                node.Next = Head; //Set head of node to current head 
+                Head = node; // Set head to node
             }
-            // Update count
-            count++;
+            count++; // Increment count
         }
 
         public void Add(User value, int index)
         {
-            // If index > count throw exception
             if (index > count)
             {
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException(); // If index > count throw exception
             }
-            // Throw if index is negative
-            if (index < 0)
+            if (index < 0) // Throw if index is negative
             {
                 throw new IndexOutOfRangeException();
             }
-            // If index == 0 then just use AddFirst()
             if (index == 0)
             {
-                AddFirst(value);
+                AddFirst(value); // Use AddFirst() if index == 0
                 return;
             }
             else
             {
-                // Start at head and set current to index
-                Node<User> current = Head;
+                Node<User> current = Head; // Start at head and set current to index
                 for (int i = 0; i < index - 1; i++)
                 {
                     current = current.Next;
                 }
-                // Create node with value
-                Node<User> node = new Node<User>(value);
+                Node<User> node = new Node<User>(value); // Create node with value
                 node.Next = current.Next;
                 current.Next = node;
 
@@ -121,22 +105,18 @@ namespace Assignment3
                 {
                     Tail = node;
                 }
-
-                // Update count
-                count++;
+                count++; // Increment count
             }
         }
 
         public void Replace(User value, int index)
         {
-            // If index > count throw exception
             if (index > count)
             {
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException(); // If index > count throw exception
             }
-            // Remove at index and add at index
-            Remove(index);
-            Add(value, index);
+            Remove(index); // Remove at index
+            Add(value, index); // Add new value at index
         }
 
         public int Count()
@@ -146,39 +126,33 @@ namespace Assignment3
 
         public void RemoveFirst()
         {
-            // Set head to next
             if (Head != null)
             {
-                Head = Head.Next;
+                Head = Head.Next; // Set head to next
                 if (Head == null)
                 {
                     Tail = null;
                 }
-                // Decrease count
-                count--;
+                count--; // Decrement count
             }
-            // Throw exception if list is empty
             else
             {
-                throw new CannotRemoveException();
+                throw new CannotRemoveException(); // Throw exception if list is empty
             }
         }
 
         public void RemoveLast()
         {
-            // Throw exception if list is empty
             if (Head == null)
             {
-                throw new CannotRemoveException();
+                throw new CannotRemoveException(); // Throw exception if list is empty
             }
-            // If 1 node then empty list
-            if (Head.Next == null)
+            if (Head.Next == null) // If only one node then empty list
             {
                 Head = null;
                 Tail = null;
             }
             else
-            // Remove last
             {
                 Node<User> current = Head;
                 while (current.Next.Next != null)
@@ -187,76 +161,65 @@ namespace Assignment3
                 }
 
                 current.Next = null;
-                Tail = current;
+                Tail = current; // Remove last
             }
-            // Decrease count
-            count--;
+            count--; // Decrement count
         }
 
         public void Remove(int index)
         {
-            // Throw if index > count
-            if (index > count)
+            if (index > count) // Throw if index > count
             {
                 throw new IndexOutOfRangeException();
             }
-            // Throw if index is negative
-            if (index < 0)
+            if (index < 0) // Throw if index is negative
             {
                 throw new IndexOutOfRangeException();
             }
-            // If index is first then just use RemoveFirst()
             if (index == 0)
             {
-                RemoveFirst();
+                RemoveFirst(); // Use RemoveFirst() if index is first then just 
                 return;
             }
-            // If index is last then just use RemoveLast()
             if (index == count - 1)
             {
-                RemoveLast();
+                RemoveLast(); // Use RemoveLast() if index is last
                 return;
             }
-            // Go to current index and remove
-            Node<User> current = Head;
+            Node<User> current = Head; // Go to current index and remove
             for (int i = 0; i < index - 1; i++)
             {
                 current = current.Next;
             }
             current.Next = current.Next.Next;
-            // Decrease count
-            count--;
+            count--; // Decrement count
         }
 
         public User GetValue(int index)
         {
-            // Throw if index > count
             if (index > count)
             {
-                throw new IndexOutOfRangeException();
+                throw new IndexOutOfRangeException(); // Throw if index > count
             }
-            // Go to index
-            Node<User> current = Head;
+            Node<User> current = Head; // Go to index
             for (int i = 0; i < index; i++)
             {
                 current = current.Next;
             }
-            // Return value at index
-            return current.Data;
+            return current.Data; // Return value at index
         }
 
         public int IndexOf(User value)
         {
-            // Go through list and if found return index
             Node<User> current = Head;
             int i = 0;
             while (current != null)
             {
-                if (current.Data.Equals(value))
+                if (current.Data.Equals(value)) // Go through list and if found return index
                 {
                     return i;
                 }
-                current = current.Next;
+                current = current.Next; // Recursively progress through the list
                 i++;
             }
             return -1;
@@ -279,9 +242,8 @@ namespace Assignment3
 
         public void SortByName()
         {
-            if (Head == null || Head.Next == null)
+            if (Head == null || Head.Next == null) // If the list is empty or contains only one element, it's already sorted
             {
-                // If the list is empty or contains only one element, it's already sorted
                 return;
             }
 
@@ -327,12 +289,10 @@ namespace Assignment3
 
         public User[] NodesToArray()
         {
-            // Create array
-            User[] users = new User[Count()];
-            // Start at head
-            Node<User> current = Head;
+            User[] users = new User[Count()]; // Create new User array
+            Node<User> current = Head; // Read from the first (Head)
             int i = 0;
-            while (current != null)
+            while (current != null) // Loop through SLL
             {
                 users[i] = current.Data;
                 current = current.Next;

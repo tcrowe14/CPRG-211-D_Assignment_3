@@ -1,5 +1,9 @@
 using Assignment3;
 
+// Assignment 3
+// Group 1
+// April 3rd 2024
+
 namespace Assignment3.Tests
 {
     public class SLLTests
@@ -16,6 +20,11 @@ namespace Assignment3.Tests
             users.AddLast(new User(4, "Ronald McDonald", "burgers4life63@outlook.com", "mcdonalds999"));
         }
 
+        [TearDown]
+        public void TearDown()
+        {
+            this.users.Clear();
+        }
 
         // Test is to check if the List is empty
         [Test]

@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// Assignment 3
+// Group 1
+// April 3rd 2024
+
 namespace Assignment3
 {
     public interface ILinkedListADT

@@ -1,4 +1,9 @@
 ﻿namespace Assignment3
+
+// Assignment 3
+// Group 1
+// April 3rd 2024
+
 {
     public class Node<User>
     {
